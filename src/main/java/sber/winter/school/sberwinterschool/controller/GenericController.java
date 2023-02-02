@@ -37,7 +37,7 @@ public abstract class GenericController<T extends GenericModel, N extends Generi
     return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.getOne(id)));
   }
 
-  @PostMapping
+  @PostMapping("/create")
   public ResponseEntity<N> create(@RequestBody N object) {
     return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.create(mapper.toEntity(object))));
   }
