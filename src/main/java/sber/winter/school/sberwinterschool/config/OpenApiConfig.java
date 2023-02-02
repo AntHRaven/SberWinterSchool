@@ -13,10 +13,10 @@ public class OpenApiConfig {
   public OpenAPI libraryProject() {
     return new OpenAPI()
         .info(new Info()
-            .description("Сайт библиотеки")
-            .title("Библиотека")
+            .description("API для получения информации о терминалах")
+            .title("Terminals")
             .version("v0.1")
-            .contact(new Contact().name("Nikita V."))
+            .contact(new Contact().name("Incognito"))
         );
   }
 }
