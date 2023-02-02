@@ -1,9 +1,7 @@
 package sber.winter.school.sberwinterschool.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "shops")
+@Table(name = "transaction_history")
 @SequenceGenerator(name = "default_generator", sequenceName = "trans_seq", allocationSize = 1)
 public class TransactionalHistory extends GenericModel{
 
@@ -24,4 +22,8 @@ public class TransactionalHistory extends GenericModel{
 
   @Column
   private Double total;
+  
+  @ManyToOne
+  @JoinColumn(name = "terminal_id", foreignKey = @ForeignKey(name = "FK_HISTORY_TERMINAL"))
+  private Terminal terminal;
 }

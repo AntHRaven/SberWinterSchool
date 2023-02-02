@@ -1,11 +1,10 @@
 package sber.winter.school.sberwinterschool.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.List;
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +17,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "terminals")
 @SequenceGenerator(name = "default_generator", sequenceName = "term_seq", allocationSize = 1)
+@AttributeOverride(name = "id", column = @Column(name="serial_number"))
 public class Terminal extends GenericModel {
-  @Column
-  private String serialNumber;
 
   @Column
   private String bank;
@@ -30,7 +28,11 @@ public class Terminal extends GenericModel {
 
   @Column
   private String responsiblePerson;
+  
+  @ManyToOne
+  @JoinColumn(name = "shop_id", foreignKey = @ForeignKey(name = "FK_TERMINAL_SHOP"))
+  private Shop shop;
 
-  @OneToMany
+  @OneToMany(mappedBy = "terminal")
   private List<TransactionalHistory> transactionalHistories;
 }

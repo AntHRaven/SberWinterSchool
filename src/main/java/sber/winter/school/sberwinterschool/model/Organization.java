@@ -7,6 +7,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.util.List;
+import java.util.Set;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +29,6 @@ public class Organization extends GenericModel{
   @Column
   private String owner;
 
-  @OneToMany
-  private List<Shop> shops;
+  @OneToMany(mappedBy = "organization")
+  private Set<Shop> shops;
 }

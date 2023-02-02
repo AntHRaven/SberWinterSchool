@@ -1,11 +1,10 @@
 package sber.winter.school.sberwinterschool.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.List;
+import java.util.Set;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -19,14 +18,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "shops")
 @SequenceGenerator(name = "default_generator", sequenceName = "shops_seq", allocationSize = 1)
-public class Shop extends GenericModel {
-
-  @Column
-  private String title;
-
-  @Column
-  private String address;
-
-  @OneToMany
-  private List<Terminal> terminals;
+public class Shop
+      extends GenericModel {
+    
+    @Column
+    private String title;
+    
+    @Column
+    private String address;
+    
+    @ManyToOne
+    @JoinColumn(name = "organization_id", foreignKey = @ForeignKey(name = "FK_SHOP_ORG"))
+    private Organization organization;
+    
+    @OneToMany(mappedBy = "shop")
+    private List<Terminal> terminals;
 }
