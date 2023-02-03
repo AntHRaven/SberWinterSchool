@@ -13,4 +13,6 @@ import lombok.Setter;
 public class OrganizationDto extends GenericDto{
   private String title;
   private String owner;
+  private List<Long> shopsId;
+
 }

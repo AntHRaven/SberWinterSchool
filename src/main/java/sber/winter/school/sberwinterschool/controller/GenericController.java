@@ -28,23 +28,31 @@ public abstract class GenericController<T extends GenericModel, N extends Generi
   }
 
   @GetMapping("/list")
+//  public ResponseEntity<List<T>> getAll() { // без маппера
   public ResponseEntity<List<N>> getAll() {
+//    return ResponseEntity.ok().body(service.listAll()); // без маппера
     return ResponseEntity.ok().body(mapper.toDtos(service.listAll()));
   }
 
   @GetMapping("/{id}")
+//  public ResponseEntity<T> getById(@PathVariable Long id) { // без маппера
   public ResponseEntity<N> getById(@PathVariable Long id) {
+//    return ResponseEntity.status(HttpStatus.OK).body(service.getOne(id)); // без маппера
     return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.getOne(id)));
   }
 
   @PostMapping("/create")
+//  public ResponseEntity<T> create(@RequestBody T object) { // без маппера
   public ResponseEntity<N> create(@RequestBody N object) {
+//    return ResponseEntity.status(HttpStatus.OK).body(service.create(object)); // без маппера
     return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.create(mapper.toEntity(object))));
   }
 
   @PutMapping("/{id}")
+//  public ResponseEntity<T> update(@RequestBody T object, @PathVariable Long id) { // без маппера
   public ResponseEntity<N> update(@RequestBody N object, @PathVariable Long id) {
     object.setId(id);
+//    return ResponseEntity.status(HttpStatus.OK).body(service.update(object));  // без маппера
     return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.update(mapper.toEntity(object))));
   }
 

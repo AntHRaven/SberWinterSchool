@@ -16,6 +16,7 @@ public class TerminalDto extends GenericDto {
   private String bank;
   private String model;
   private String responsiblePerson;
+  private Long shopId;
   private List<Long> transactionalHistoriesId;
 
 }

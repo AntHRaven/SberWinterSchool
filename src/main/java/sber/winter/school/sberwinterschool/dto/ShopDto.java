@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sber.winter.school.sberwinterschool.model.Organization;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +13,6 @@ import sber.winter.school.sberwinterschool.model.Organization;
 public class ShopDto extends GenericDto {
   private String title;
   private String address;
-  private OrganizationDto organization;
+  private Long organizationId;
   private List<Long> terminalsId;
 }

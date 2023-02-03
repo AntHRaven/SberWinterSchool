@@ -20,20 +20,20 @@ import lombok.Setter;
 @Entity
 @Table(name = "shops")
 @SequenceGenerator(name = "default_generator", sequenceName = "shops_seq", allocationSize = 1)
-//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Shop
       extends GenericModel {
-    
+
     @Column
     private String title;
-    
+
     @Column
     private String address;
-    
+
     @ManyToOne
     @JoinColumn(name = "organization_id", foreignKey = @ForeignKey(name = "FK_SHOP_ORG"))
     private Organization organization;
-    
+
     @OneToMany(mappedBy = "shop")
     private List<Terminal> terminals;
 }

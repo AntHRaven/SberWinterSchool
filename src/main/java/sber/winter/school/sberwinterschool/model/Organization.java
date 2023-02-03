@@ -1,5 +1,7 @@
 package sber.winter.school.sberwinterschool.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -21,6 +23,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "organizations")
 @SequenceGenerator(name = "default_generator", sequenceName = "org_seq", allocationSize = 1)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Organization extends GenericModel{
 
   @Column

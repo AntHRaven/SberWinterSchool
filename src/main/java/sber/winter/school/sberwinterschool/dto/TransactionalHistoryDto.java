@@ -15,4 +15,5 @@ public class TransactionalHistoryDto extends GenericDto{
 
   private LocalDateTime transactionalDate;
   private Double total;
+  private Long terminalId;
 }
